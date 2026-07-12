@@ -56,6 +56,54 @@ export type Database = {
         }
         Relationships: []
       }
+      leads: {
+        Row: {
+          budget: string | null
+          company: string | null
+          country: string | null
+          created_at: string
+          description: string
+          email: string
+          full_name: string
+          id: string
+          phone: string | null
+          preferred_contact: string | null
+          project_type: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          budget?: string | null
+          company?: string | null
+          country?: string | null
+          created_at?: string
+          description: string
+          email: string
+          full_name: string
+          id?: string
+          phone?: string | null
+          preferred_contact?: string | null
+          project_type?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          budget?: string | null
+          company?: string | null
+          country?: string | null
+          created_at?: string
+          description?: string
+          email?: string
+          full_name?: string
+          id?: string
+          phone?: string | null
+          preferred_contact?: string | null
+          project_type?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       messages: {
         Row: {
           created_at: string
@@ -63,6 +111,7 @@ export type Database = {
           id: string
           message: string
           name: string
+          phone: string | null
           status: string
           subject: string | null
         }
@@ -72,6 +121,7 @@ export type Database = {
           id?: string
           message: string
           name: string
+          phone?: string | null
           status?: string
           subject?: string | null
         }
@@ -81,8 +131,45 @@ export type Database = {
           id?: string
           message?: string
           name?: string
+          phone?: string | null
           status?: string
           subject?: string | null
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          actor_email: string | null
+          actor_name: string | null
+          body: string | null
+          created_at: string
+          id: string
+          kind: string
+          read: boolean
+          ref_id: string | null
+          title: string
+        }
+        Insert: {
+          actor_email?: string | null
+          actor_name?: string | null
+          body?: string | null
+          created_at?: string
+          id?: string
+          kind: string
+          read?: boolean
+          ref_id?: string | null
+          title: string
+        }
+        Update: {
+          actor_email?: string | null
+          actor_name?: string | null
+          body?: string | null
+          created_at?: string
+          id?: string
+          kind?: string
+          read?: boolean
+          ref_id?: string | null
+          title?: string
         }
         Relationships: []
       }
