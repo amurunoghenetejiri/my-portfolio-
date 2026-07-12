@@ -44,7 +44,8 @@ function BlogPage() {
         const { error } = await supabase.from("blog_posts").update(payload).eq("id", p.id);
         if (error) throw error;
       } else {
-        const { error } = await supabase.from("blog_posts").insert({ title: p.title!, slug, ...payload });
+        const { title, ...rest } = payload;
+        const { error } = await supabase.from("blog_posts").insert({ ...rest, title: title! });
         if (error) throw error;
       }
     },

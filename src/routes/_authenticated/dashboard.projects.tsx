@@ -48,7 +48,8 @@ function ProjectsPage() {
         const { error } = await supabase.from("projects").update(payload).eq("id", p.id);
         if (error) throw error;
       } else {
-        const { error } = await supabase.from("projects").insert({ title: p.title!, slug, ...payload });
+        const { title, ...rest } = payload;
+        const { error } = await supabase.from("projects").insert({ ...rest, title: title! });
         if (error) throw error;
       }
     },

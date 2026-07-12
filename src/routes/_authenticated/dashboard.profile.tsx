@@ -28,7 +28,7 @@ function ProfilePage() {
   const save = useMutation({
     mutationFn: async (payload: Record<string, unknown>) => {
       if (!data?.id) throw new Error("Profile row missing");
-      const { error } = await supabase.from("site_profile").update(payload).eq("id", data.id);
+      const { error } = await supabase.from("site_profile").update(payload as never).eq("id", data.id);
       if (error) throw error;
     },
     onSuccess: () => {
