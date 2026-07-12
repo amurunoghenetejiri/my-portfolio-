@@ -8,6 +8,7 @@ import { Experience } from "@/components/portfolio/Experience";
 import { Footer } from "@/components/portfolio/Footer";
 import { Gallery } from "@/components/portfolio/Gallery";
 import { Hero } from "@/components/portfolio/Hero";
+import { HireMeDialog } from "@/components/portfolio/HireMeDialog";
 import { Loader } from "@/components/portfolio/Loader";
 import { Navbar } from "@/components/portfolio/Navbar";
 import { Projects } from "@/components/portfolio/Projects";
@@ -41,6 +42,7 @@ function Index() {
       </main>
       <Footer />
       <ScrollToTop />
+      <HireMeDialog />
     </>
   );
 }

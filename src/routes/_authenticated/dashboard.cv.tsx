@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { uploadMedia } from "@/lib/admin-helpers";
+import { uploadCv } from "@/lib/admin-helpers";
 import { Card, Toast } from "./dashboard.profile";
 import { ExternalLink, FileText, Loader2, Trash2, Upload } from "lucide-react";
 
@@ -37,7 +37,7 @@ function CvPage() {
     setBusy(true);
     setError(null);
     try {
-      const url = await uploadMedia(file, "cv");
+      const url = await uploadCv(file);
       await setCvUrl.mutateAsync(url);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Upload failed");

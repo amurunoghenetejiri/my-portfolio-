@@ -16,7 +16,9 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedDashboardIndexRouteImport } from './routes/_authenticated/dashboard.index'
 import { Route as AuthenticatedDashboardProjectsRouteImport } from './routes/_authenticated/dashboard.projects'
 import { Route as AuthenticatedDashboardProfileRouteImport } from './routes/_authenticated/dashboard.profile'
+import { Route as AuthenticatedDashboardNotificationsRouteImport } from './routes/_authenticated/dashboard.notifications'
 import { Route as AuthenticatedDashboardMessagesRouteImport } from './routes/_authenticated/dashboard.messages'
+import { Route as AuthenticatedDashboardLeadsRouteImport } from './routes/_authenticated/dashboard.leads'
 import { Route as AuthenticatedDashboardCvRouteImport } from './routes/_authenticated/dashboard.cv'
 import { Route as AuthenticatedDashboardBlogRouteImport } from './routes/_authenticated/dashboard.blog'
 
@@ -57,10 +59,22 @@ const AuthenticatedDashboardProfileRoute =
     path: '/profile',
     getParentRoute: () => AuthenticatedDashboardRoute,
   } as any)
+const AuthenticatedDashboardNotificationsRoute =
+  AuthenticatedDashboardNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
 const AuthenticatedDashboardMessagesRoute =
   AuthenticatedDashboardMessagesRouteImport.update({
     id: '/messages',
     path: '/messages',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedDashboardLeadsRoute =
+  AuthenticatedDashboardLeadsRouteImport.update({
+    id: '/leads',
+    path: '/leads',
     getParentRoute: () => AuthenticatedDashboardRoute,
   } as any)
 const AuthenticatedDashboardCvRoute =
@@ -82,7 +96,9 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/dashboard/blog': typeof AuthenticatedDashboardBlogRoute
   '/dashboard/cv': typeof AuthenticatedDashboardCvRoute
+  '/dashboard/leads': typeof AuthenticatedDashboardLeadsRoute
   '/dashboard/messages': typeof AuthenticatedDashboardMessagesRoute
+  '/dashboard/notifications': typeof AuthenticatedDashboardNotificationsRoute
   '/dashboard/profile': typeof AuthenticatedDashboardProfileRoute
   '/dashboard/projects': typeof AuthenticatedDashboardProjectsRoute
   '/dashboard/': typeof AuthenticatedDashboardIndexRoute
@@ -92,7 +108,9 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/dashboard/blog': typeof AuthenticatedDashboardBlogRoute
   '/dashboard/cv': typeof AuthenticatedDashboardCvRoute
+  '/dashboard/leads': typeof AuthenticatedDashboardLeadsRoute
   '/dashboard/messages': typeof AuthenticatedDashboardMessagesRoute
+  '/dashboard/notifications': typeof AuthenticatedDashboardNotificationsRoute
   '/dashboard/profile': typeof AuthenticatedDashboardProfileRoute
   '/dashboard/projects': typeof AuthenticatedDashboardProjectsRoute
   '/dashboard': typeof AuthenticatedDashboardIndexRoute
@@ -105,7 +123,9 @@ export interface FileRoutesById {
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/_authenticated/dashboard/blog': typeof AuthenticatedDashboardBlogRoute
   '/_authenticated/dashboard/cv': typeof AuthenticatedDashboardCvRoute
+  '/_authenticated/dashboard/leads': typeof AuthenticatedDashboardLeadsRoute
   '/_authenticated/dashboard/messages': typeof AuthenticatedDashboardMessagesRoute
+  '/_authenticated/dashboard/notifications': typeof AuthenticatedDashboardNotificationsRoute
   '/_authenticated/dashboard/profile': typeof AuthenticatedDashboardProfileRoute
   '/_authenticated/dashboard/projects': typeof AuthenticatedDashboardProjectsRoute
   '/_authenticated/dashboard/': typeof AuthenticatedDashboardIndexRoute
@@ -118,7 +138,9 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/dashboard/blog'
     | '/dashboard/cv'
+    | '/dashboard/leads'
     | '/dashboard/messages'
+    | '/dashboard/notifications'
     | '/dashboard/profile'
     | '/dashboard/projects'
     | '/dashboard/'
@@ -128,7 +150,9 @@ export interface FileRouteTypes {
     | '/admin'
     | '/dashboard/blog'
     | '/dashboard/cv'
+    | '/dashboard/leads'
     | '/dashboard/messages'
+    | '/dashboard/notifications'
     | '/dashboard/profile'
     | '/dashboard/projects'
     | '/dashboard'
@@ -140,7 +164,9 @@ export interface FileRouteTypes {
     | '/_authenticated/dashboard'
     | '/_authenticated/dashboard/blog'
     | '/_authenticated/dashboard/cv'
+    | '/_authenticated/dashboard/leads'
     | '/_authenticated/dashboard/messages'
+    | '/_authenticated/dashboard/notifications'
     | '/_authenticated/dashboard/profile'
     | '/_authenticated/dashboard/projects'
     | '/_authenticated/dashboard/'
@@ -203,11 +229,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardProfileRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
     }
+    '/_authenticated/dashboard/notifications': {
+      id: '/_authenticated/dashboard/notifications'
+      path: '/notifications'
+      fullPath: '/dashboard/notifications'
+      preLoaderRoute: typeof AuthenticatedDashboardNotificationsRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
     '/_authenticated/dashboard/messages': {
       id: '/_authenticated/dashboard/messages'
       path: '/messages'
       fullPath: '/dashboard/messages'
       preLoaderRoute: typeof AuthenticatedDashboardMessagesRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/dashboard/leads': {
+      id: '/_authenticated/dashboard/leads'
+      path: '/leads'
+      fullPath: '/dashboard/leads'
+      preLoaderRoute: typeof AuthenticatedDashboardLeadsRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
     }
     '/_authenticated/dashboard/cv': {
@@ -230,7 +270,9 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedDashboardRouteChildren {
   AuthenticatedDashboardBlogRoute: typeof AuthenticatedDashboardBlogRoute
   AuthenticatedDashboardCvRoute: typeof AuthenticatedDashboardCvRoute
+  AuthenticatedDashboardLeadsRoute: typeof AuthenticatedDashboardLeadsRoute
   AuthenticatedDashboardMessagesRoute: typeof AuthenticatedDashboardMessagesRoute
+  AuthenticatedDashboardNotificationsRoute: typeof AuthenticatedDashboardNotificationsRoute
   AuthenticatedDashboardProfileRoute: typeof AuthenticatedDashboardProfileRoute
   AuthenticatedDashboardProjectsRoute: typeof AuthenticatedDashboardProjectsRoute
   AuthenticatedDashboardIndexRoute: typeof AuthenticatedDashboardIndexRoute
@@ -240,7 +282,10 @@ const AuthenticatedDashboardRouteChildren: AuthenticatedDashboardRouteChildren =
   {
     AuthenticatedDashboardBlogRoute: AuthenticatedDashboardBlogRoute,
     AuthenticatedDashboardCvRoute: AuthenticatedDashboardCvRoute,
+    AuthenticatedDashboardLeadsRoute: AuthenticatedDashboardLeadsRoute,
     AuthenticatedDashboardMessagesRoute: AuthenticatedDashboardMessagesRoute,
+    AuthenticatedDashboardNotificationsRoute:
+      AuthenticatedDashboardNotificationsRoute,
     AuthenticatedDashboardProfileRoute: AuthenticatedDashboardProfileRoute,
     AuthenticatedDashboardProjectsRoute: AuthenticatedDashboardProjectsRoute,
     AuthenticatedDashboardIndexRoute: AuthenticatedDashboardIndexRoute,
