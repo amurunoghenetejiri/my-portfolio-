@@ -1,7 +1,8 @@
 import { Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
-import { Briefcase, FileText, Home, Inbox, LogOut, ScrollText, User } from "lucide-react";
+import { Bell, Briefcase, FileText, Handshake, Home, Inbox, LogOut, ScrollText, User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { LOGO_URL, BRAND } from "@/components/portfolio/assets";
+import { NotificationBell } from "./NotificationBell";
 
 type NavItem = { to: string; label: string; icon: typeof Home; exact?: boolean };
 const nav: NavItem[] = [
@@ -10,6 +11,8 @@ const nav: NavItem[] = [
   { to: "/dashboard/projects", label: "Projects", icon: Briefcase },
   { to: "/dashboard/blog", label: "Blog", icon: FileText },
   { to: "/dashboard/messages", label: "Messages", icon: Inbox },
+  { to: "/dashboard/leads", label: "Hire Me", icon: Handshake },
+  { to: "/dashboard/notifications", label: "Notifications", icon: Bell },
   { to: "/dashboard/cv", label: "CV", icon: ScrollText },
 ];
 
@@ -32,7 +35,7 @@ export function AdminShell() {
             <div className="text-[10px] uppercase tracking-[0.24em] text-emerald-gradient">Admin</div>
           </div>
         </Link>
-        <nav className="p-3 space-y-1 flex-1">
+        <nav className="p-3 space-y-1 flex-1 overflow-y-auto">
           {nav.map((item) => {
             const active = item.exact ? pathname === item.to : pathname.startsWith(item.to);
             const Icon = item.icon;
@@ -61,12 +64,16 @@ export function AdminShell() {
       </aside>
 
       <div className="flex flex-col min-h-dvh">
-        <header className="md:hidden flex items-center justify-between border-b border-border/40 px-4 py-3 bg-card/30 backdrop-blur">
-          <Link to="/" className="flex items-center gap-2">
+        <header className="flex items-center justify-between border-b border-border/40 px-4 py-3 bg-card/30 backdrop-blur">
+          <Link to="/" className="flex items-center gap-2 md:hidden">
             <img src={LOGO_URL} alt="" className="h-7 w-7 rounded-full" />
             <span className="font-display font-bold text-sm">{BRAND.name} Admin</span>
           </Link>
-          <button onClick={signOut} className="text-muted-foreground"><LogOut className="h-4 w-4" /></button>
+          <div className="hidden md:block text-xs uppercase tracking-[0.28em] text-muted-foreground">Control Center</div>
+          <div className="flex items-center gap-3">
+            <NotificationBell />
+            <button onClick={signOut} className="md:hidden text-muted-foreground"><LogOut className="h-4 w-4" /></button>
+          </div>
         </header>
         <nav className="md:hidden flex overflow-x-auto gap-1 px-3 py-2 border-b border-border/40 bg-card/20">
           {nav.map((item) => {

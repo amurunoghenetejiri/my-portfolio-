@@ -15,12 +15,13 @@ export function Contact() {
     const fd = new FormData(form);
     const name = String(fd.get("name") || "").trim();
     const email = String(fd.get("email") || "").trim();
+    const phone = String(fd.get("phone") || "").trim() || null;
     const subject = String(fd.get("subject") || "").trim() || null;
     const message = String(fd.get("message") || "").trim();
     if (!name || !email || !message) { setError("Please fill in all required fields."); setState("error"); return; }
     setState("sending");
     setError(null);
-    const { error: err } = await supabase.from("messages").insert({ name, email, subject, message });
+    const { error: err } = await supabase.from("messages").insert({ name, email, phone, subject, message });
     if (err) { setError(err.message); setState("error"); return; }
     setState("sent");
     form.reset();
@@ -73,8 +74,9 @@ export function Contact() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Field label="Name" name="name" type="text" placeholder="Your full name" />
             <Field label="Email" name="email" type="email" placeholder="you@example.com" />
+            <Field label="Phone" name="phone" type="tel" placeholder="+234 …" required={false} />
+            <Field label="Subject" name="subject" type="text" placeholder="What is it about?" required={false} />
           </div>
-          <Field label="Subject" name="subject" type="text" placeholder="What is it about?" />
           <div>
             <label htmlFor="message" className="block text-xs uppercase tracking-[0.24em] text-muted-foreground mb-2">Message</label>
             <textarea
@@ -100,7 +102,7 @@ export function Contact() {
   );
 }
 
-function Field({ label, name, type, placeholder }: { label: string; name: string; type: string; placeholder: string }) {
+function Field({ label, name, type, placeholder, required = true }: { label: string; name: string; type: string; placeholder: string; required?: boolean }) {
   return (
     <div>
       <label htmlFor={name} className="block text-xs uppercase tracking-[0.24em] text-muted-foreground mb-2">{label}</label>
@@ -108,7 +110,7 @@ function Field({ label, name, type, placeholder }: { label: string; name: string
         id={name}
         name={name}
         type={type}
-        required
+        required={required}
         placeholder={placeholder}
         className="w-full rounded-2xl border border-border/60 bg-card/40 backdrop-blur px-4 py-3 text-sm outline-none transition focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/20"
       />

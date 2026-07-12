@@ -78,7 +78,7 @@ export function Hero() {
               <a href="#" className="btn-ghost-metal">
                 <Download className="h-4 w-4" /> Download CV
               </a>
-              <a href="#contact" className="btn-ghost-metal">Hire Me</a>
+              <button type="button" data-hire-me className="btn-ghost-metal">Hire Me</button>
               <a href="#contact" className="btn-ghost-metal">
                 <Mail className="h-4 w-4" /> Contact
               </a>
