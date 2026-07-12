@@ -1,16 +1,30 @@
 import { motion } from "framer-motion";
-import { Send } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
 import { useState, type FormEvent } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { SOCIALS } from "./assets";
 import { GlassCard, Section } from "./Section";
 import { SocialIcon } from "./SocialIcon";
 
 export function Contact() {
-  const [sent, setSent] = useState(false);
-  const onSubmit = (e: FormEvent) => {
+  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 3500);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const name = String(fd.get("name") || "").trim();
+    const email = String(fd.get("email") || "").trim();
+    const subject = String(fd.get("subject") || "").trim() || null;
+    const message = String(fd.get("message") || "").trim();
+    if (!name || !email || !message) { setError("Please fill in all required fields."); setState("error"); return; }
+    setState("sending");
+    setError(null);
+    const { error: err } = await supabase.from("messages").insert({ name, email, subject, message });
+    if (err) { setError(err.message); setState("error"); return; }
+    setState("sent");
+    form.reset();
+    setTimeout(() => setState("idle"), 4000);
   };
 
   return (
@@ -73,9 +87,11 @@ export function Contact() {
             />
           </div>
           <div className="flex items-center justify-between gap-4">
-            <p className="text-xs text-muted-foreground">Responses within 24 hours.</p>
-            <button type="submit" className="btn-emerald">
-              {sent ? "Message sent ✓" : (<>Send message <Send className="h-4 w-4" /></>)}
+            <p className="text-xs text-muted-foreground">{error ?? "Responses within 24 hours."}</p>
+            <button type="submit" disabled={state === "sending"} className="btn-emerald disabled:opacity-60">
+              {state === "sending" ? (<><Loader2 className="h-4 w-4 animate-spin" /> Sending…</>)
+                : state === "sent" ? "Message sent ✓"
+                : (<>Send message <Send className="h-4 w-4" /></>)}
             </button>
           </div>
         </motion.form>
