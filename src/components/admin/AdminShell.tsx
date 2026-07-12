@@ -3,14 +3,15 @@ import { Briefcase, FileText, Home, Inbox, LogOut, ScrollText, User } from "luci
 import { supabase } from "@/integrations/supabase/client";
 import { LOGO_URL, BRAND } from "@/components/portfolio/assets";
 
-const nav = [
+type NavItem = { to: string; label: string; icon: typeof Home; exact?: boolean };
+const nav: NavItem[] = [
   { to: "/dashboard", label: "Overview", icon: Home, exact: true },
   { to: "/dashboard/profile", label: "Profile", icon: User },
   { to: "/dashboard/projects", label: "Projects", icon: Briefcase },
   { to: "/dashboard/blog", label: "Blog", icon: FileText },
   { to: "/dashboard/messages", label: "Messages", icon: Inbox },
   { to: "/dashboard/cv", label: "CV", icon: ScrollText },
-] as const;
+];
 
 export function AdminShell() {
   const { pathname } = useLocation();
