@@ -1,9 +1,25 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Download, Mail, Sparkles } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 import { BRAND, CEO_URL, SOCIALS } from "./assets";
 import { SocialIcon } from "./SocialIcon";
 
 export function Hero() {
+  const { data: cvUrl } = useQuery({
+    queryKey: ["public-cv-url"],
+    queryFn: async () => {
+      const { data } = await supabase.from("site_profile").select("cv_url").limit(1).maybeSingle();
+      return data?.cv_url ?? null;
+    },
+    staleTime: 60_000,
+  });
+
+  const onDownloadCv = () => {
+    if (!cvUrl) return;
+    void supabase.from("notifications").insert({ kind: "cv_download", title: "CV downloaded" });
+  };
+
   return (
     <section id="home" className="relative min-h-dvh flex items-center overflow-hidden pt-28 pb-16">
       {/* Ambient background */}
@@ -75,7 +91,13 @@ export function Hero() {
               <a href="#projects" className="btn-emerald">
                 View Portfolio <ArrowRight className="h-4 w-4" />
               </a>
-              <a href="#" className="btn-ghost-metal">
+              <a
+                href={cvUrl || "#"}
+                onClick={(e) => { if (!cvUrl) { e.preventDefault(); return; } onDownloadCv(); }}
+                target="_blank"
+                rel="noreferrer"
+                className={`btn-ghost-metal ${!cvUrl ? "opacity-50 pointer-events-none" : ""}`}
+              >
                 <Download className="h-4 w-4" /> Download CV
               </a>
               <button type="button" data-hire-me className="btn-ghost-metal">Hire Me</button>
