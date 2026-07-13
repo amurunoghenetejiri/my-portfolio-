@@ -1,8 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { BRAND } from "@/components/portfolio/assets";
-import { useSiteAssets } from "@/hooks/useSiteAssets";
+import { LOGO_URL, BRAND } from "@/components/portfolio/assets";
 import { Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
@@ -16,7 +15,6 @@ export const Route = createFileRoute("/admin")({
 });
 
 function AdminAuthPage() {
-  const { logoUrl } = useSiteAssets();
   const navigate = useNavigate();
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
@@ -64,7 +62,7 @@ function AdminAuthPage() {
       <div className="w-full max-w-md">
         <Link to="/" className="mb-6 flex items-center gap-2.5 justify-center">
           <span className="grid h-10 w-10 place-items-center rounded-full bg-black ring-1 ring-emerald-400/40 overflow-hidden">
-            <img src={logoUrl} alt="" className="h-10 w-10 object-cover" />
+            <img src={LOGO_URL} alt="" className="h-10 w-10 object-cover" />
           </span>
           <span className="font-display font-bold tracking-widest text-metallic">{BRAND.name}</span>
         </Link>

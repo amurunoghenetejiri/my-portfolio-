@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Target, Compass, Heart } from "lucide-react";
-import { useSiteAssets } from "@/hooks/useSiteAssets";
-import { SafeImage } from "./SafeImage";
+import { CEO_URL } from "./assets";
 import { GlassCard, Section } from "./Section";
 
 const timeline = [
@@ -19,7 +18,6 @@ const pillars = [
 ];
 
 export function About() {
-  const { ceoUrl } = useSiteAssets();
   return (
     <Section
       id="about"
@@ -37,7 +35,7 @@ export function About() {
         >
           <div className="relative rounded-3xl overflow-hidden glass p-3">
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5]">
-              <SafeImage src={ceoUrl} alt="Amurun Destiny" className="h-full w-full object-cover" loading="lazy" />
+              <img src={CEO_URL} alt="Amurun Destiny" className="h-full w-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="text-xs uppercase tracking-widest text-emerald-300">Amurun Destiny</div>

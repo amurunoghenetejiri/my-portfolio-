@@ -1,12 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { BRAND } from "./assets";
-import { useSiteAssets } from "@/hooks/useSiteAssets";
+import { LOGO_URL, BRAND } from "./assets";
 
 export function Loader() {
   const [pct, setPct] = useState(0);
   const [done, setDone] = useState(false);
-  const { logoUrl } = useSiteAssets();
 
   useEffect(() => {
     let raf = 0;
@@ -45,7 +43,7 @@ export function Loader() {
             />
             <div className="absolute inset-3 rounded-full border border-emerald-400/20 animate-pulse-ring" />
             <motion.img
-              src={logoUrl}
+              src={LOGO_URL}
               alt="D4 TECH"
               className="relative h-32 w-32 rounded-full object-cover"
               initial={{ scale: 0.85, opacity: 0 }}

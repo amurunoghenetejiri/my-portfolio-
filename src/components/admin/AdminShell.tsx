@@ -1,8 +1,7 @@
 import { Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
-import { Bell, Briefcase, FileText, Handshake, Home, Image as ImageIcon, Inbox, LogOut, ScrollText, User } from "lucide-react";
+import { Bell, Briefcase, FileText, Handshake, Home, Inbox, LogOut, ScrollText, User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { BRAND } from "@/components/portfolio/assets";
-import { useSiteAssets } from "@/hooks/useSiteAssets";
+import { LOGO_URL, BRAND } from "@/components/portfolio/assets";
 import { NotificationBell } from "./NotificationBell";
 
 type NavItem = { to: string; label: string; icon: typeof Home; exact?: boolean };
@@ -13,13 +12,11 @@ const nav: NavItem[] = [
   { to: "/dashboard/blog", label: "Blog", icon: FileText },
   { to: "/dashboard/messages", label: "Messages", icon: Inbox },
   { to: "/dashboard/leads", label: "Hire Me", icon: Handshake },
-  { to: "/dashboard/media", label: "Media Library", icon: ImageIcon },
   { to: "/dashboard/notifications", label: "Notifications", icon: Bell },
   { to: "/dashboard/cv", label: "CV", icon: ScrollText },
 ];
 
 export function AdminShell() {
-  const { logoUrl } = useSiteAssets();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const signOut = async () => {
@@ -31,7 +28,7 @@ export function AdminShell() {
       <aside className="hidden md:flex flex-col border-r border-border/40 bg-card/30 backdrop-blur">
         <Link to="/" className="flex items-center gap-2.5 px-5 py-5 border-b border-border/40">
           <span className="grid h-9 w-9 place-items-center rounded-full bg-black ring-1 ring-emerald-400/40 overflow-hidden">
-            <img src={logoUrl} alt="" className="h-9 w-9 object-cover" />
+            <img src={LOGO_URL} alt="" className="h-9 w-9 object-cover" />
           </span>
           <div>
             <div className="font-display font-bold tracking-widest text-sm text-metallic">{BRAND.name}</div>
@@ -69,7 +66,7 @@ export function AdminShell() {
       <div className="flex flex-col min-h-dvh">
         <header className="flex items-center justify-between border-b border-border/40 px-4 py-3 bg-card/30 backdrop-blur">
           <Link to="/" className="flex items-center gap-2 md:hidden">
-            <img src={logoUrl} alt="" className="h-7 w-7 rounded-full" />
+            <img src={LOGO_URL} alt="" className="h-7 w-7 rounded-full" />
             <span className="font-display font-bold text-sm">{BRAND.name} Admin</span>
           </Link>
           <div className="hidden md:block text-xs uppercase tracking-[0.28em] text-muted-foreground">Control Center</div>
