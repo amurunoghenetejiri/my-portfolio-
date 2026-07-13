@@ -1,7 +1,8 @@
 import { Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
-import { Bell, Briefcase, FileText, Handshake, Home, Inbox, LogOut, ScrollText, User } from "lucide-react";
+import { Bell, Briefcase, FileText, Handshake, Home, Image as ImageIcon, Inbox, LogOut, ScrollText, User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { LOGO_URL, BRAND } from "@/components/portfolio/assets";
+import { BRAND } from "@/components/portfolio/assets";
+import { useSiteAssets } from "@/hooks/useSiteAssets";
 import { NotificationBell } from "./NotificationBell";
 
 type NavItem = { to: string; label: string; icon: typeof Home; exact?: boolean };
@@ -12,11 +13,13 @@ const nav: NavItem[] = [
   { to: "/dashboard/blog", label: "Blog", icon: FileText },
   { to: "/dashboard/messages", label: "Messages", icon: Inbox },
   { to: "/dashboard/leads", label: "Hire Me", icon: Handshake },
+  { to: "/dashboard/media", label: "Media Library", icon: ImageIcon },
   { to: "/dashboard/notifications", label: "Notifications", icon: Bell },
   { to: "/dashboard/cv", label: "CV", icon: ScrollText },
 ];
 
 export function AdminShell() {
+  const { logoUrl } = useSiteAssets();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const signOut = async () => {
