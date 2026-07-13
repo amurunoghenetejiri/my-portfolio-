@@ -1,9 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { LOGO_URL, NAV_SECTIONS, BRAND } from "./assets";
+import { NAV_SECTIONS, BRAND } from "./assets";
+import { useSiteAssets } from "@/hooks/useSiteAssets";
 
 export function Navbar() {
+  const { logoUrl } = useSiteAssets();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
   const [open, setOpen] = useState(false);
@@ -55,7 +57,7 @@ export function Navbar() {
         >
           <a href="#home" className="flex items-center gap-2.5 shrink-0 group">
             <span className="relative grid h-9 w-9 place-items-center rounded-full bg-black ring-1 ring-emerald-400/40 overflow-hidden">
-              <img src={LOGO_URL} alt="D4 TECH logo" className="h-9 w-9 object-cover" />
+              <img src={logoUrl} alt="D4 TECH logo" className="h-9 w-9 object-cover" />
               <span className="absolute inset-0 rounded-full ring-2 ring-emerald-400/0 group-hover:ring-emerald-400/60 transition" />
             </span>
             <span className="font-display font-bold tracking-widest text-sm text-metallic hidden sm:block">
@@ -127,7 +129,7 @@ export function Navbar() {
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <img src={LOGO_URL} alt="" className="h-8 w-8 rounded-full" />
+                  <img src={logoUrl} alt="" className="h-8 w-8 rounded-full" />
                   <span className="font-display font-bold tracking-widest text-sm text-metallic">
                     {BRAND.name}
                   </span>

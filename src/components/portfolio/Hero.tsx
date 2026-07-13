@@ -2,10 +2,13 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download, Mail, Sparkles } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { BRAND, CEO_URL, SOCIALS } from "./assets";
+import { BRAND, SOCIALS } from "./assets";
 import { SocialIcon } from "./SocialIcon";
+import { useSiteAssets } from "@/hooks/useSiteAssets";
+import { SafeImage } from "./SafeImage";
 
 export function Hero() {
+  const { ceoUrl } = useSiteAssets();
   const { data: cvUrl } = useQuery({
     queryKey: ["public-cv-url"],
     queryFn: async () => {
@@ -147,8 +150,8 @@ export function Hero() {
               <div className="absolute inset-2 rounded-full border border-dashed border-emerald-300/30 animate-pulse-ring" />
               {/* Portrait */}
               <div className="absolute inset-3 rounded-full overflow-hidden bg-black">
-                <img
-                  src={CEO_URL}
+                <SafeImage
+                  src={ceoUrl}
                   alt="Amurun Destiny — Founder & CEO of D4 TECH"
                   className="h-full w-full object-cover"
                   loading="eager"

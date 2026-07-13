@@ -1,7 +1,9 @@
-import { BRAND, LOGO_URL, NAV_SECTIONS, SOCIALS } from "./assets";
+import { BRAND, NAV_SECTIONS, SOCIALS } from "./assets";
 import { SocialIcon } from "./SocialIcon";
+import { useSiteAssets } from "@/hooks/useSiteAssets";
 
 export function Footer() {
+  const { logoUrl } = useSiteAssets();
   return (
     <footer className="relative border-t border-border/40 pt-16 pb-10">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/60 to-transparent" />
@@ -10,7 +12,7 @@ export function Footer() {
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3">
               <span className="grid h-11 w-11 place-items-center rounded-full bg-black ring-1 ring-emerald-400/40 overflow-hidden">
-                <img src={LOGO_URL} alt="D4 TECH" className="h-11 w-11 object-cover" />
+                <img src={logoUrl} alt="D4 TECH" className="h-11 w-11 object-cover" />
               </span>
               <div>
                 <div className="font-display font-bold tracking-widest text-metallic">{BRAND.name}</div>
