@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Lightbulb, Award, ShieldCheck, Zap } from "lucide-react";
-import { BRAND, LOGO_URL } from "./assets";
+import { BRAND } from "./assets";
+import { useSiteAssets } from "@/hooks/useSiteAssets";
+import { SafeImage } from "./SafeImage";
 import { GlassCard, Section } from "./Section";
 
 const values = [
@@ -16,6 +18,7 @@ const stack = [
 ];
 
 export function Company() {
+  const { logoUrl } = useSiteAssets();
   return (
     <Section
       id="company"
@@ -35,12 +38,13 @@ export function Company() {
           <div className="relative aspect-square rounded-3xl overflow-hidden glass p-8 flex items-center justify-center">
             <div className="absolute -inset-16 rounded-full bg-emerald-500/10 blur-3xl" />
             <div className="absolute inset-8 rounded-full border border-emerald-400/20 animate-pulse-ring" />
-            <img
-              src={LOGO_URL}
+            <SafeImage
+              src={logoUrl}
               alt="D4 TECH logo"
               className="relative w-full max-w-sm h-auto object-contain drop-shadow-[0_0_40px_rgba(52,211,153,.4)]"
               loading="lazy"
             />
+
           </div>
         </motion.div>
 
