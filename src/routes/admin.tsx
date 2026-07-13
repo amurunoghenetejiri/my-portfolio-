@@ -1,7 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { LOGO_URL, BRAND } from "@/components/portfolio/assets";
+import { BRAND } from "@/components/portfolio/assets";
+import { useSiteAssets } from "@/hooks/useSiteAssets";
 import { Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
@@ -15,6 +16,7 @@ export const Route = createFileRoute("/admin")({
 });
 
 function AdminAuthPage() {
+  const { logoUrl } = useSiteAssets();
   const navigate = useNavigate();
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");

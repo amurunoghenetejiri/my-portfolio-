@@ -31,7 +31,7 @@ export function AdminShell() {
       <aside className="hidden md:flex flex-col border-r border-border/40 bg-card/30 backdrop-blur">
         <Link to="/" className="flex items-center gap-2.5 px-5 py-5 border-b border-border/40">
           <span className="grid h-9 w-9 place-items-center rounded-full bg-black ring-1 ring-emerald-400/40 overflow-hidden">
-            <img src={LOGO_URL} alt="" className="h-9 w-9 object-cover" />
+            <img src={logoUrl} alt="" className="h-9 w-9 object-cover" />
           </span>
           <div>
             <div className="font-display font-bold tracking-widest text-sm text-metallic">{BRAND.name}</div>
@@ -69,7 +69,7 @@ export function AdminShell() {
       <div className="flex flex-col min-h-dvh">
         <header className="flex items-center justify-between border-b border-border/40 px-4 py-3 bg-card/30 backdrop-blur">
           <Link to="/" className="flex items-center gap-2 md:hidden">
-            <img src={LOGO_URL} alt="" className="h-7 w-7 rounded-full" />
+            <img src={logoUrl} alt="" className="h-7 w-7 rounded-full" />
             <span className="font-display font-bold text-sm">{BRAND.name} Admin</span>
           </Link>
           <div className="hidden md:block text-xs uppercase tracking-[0.28em] text-muted-foreground">Control Center</div>
