@@ -1,8 +1,9 @@
-import logo from "@/assets/d4tech-logo.png.asset.json";
-import ceo from "@/assets/ceo-portrait.png.asset.json";
+import logoUrl from "@/assets/d4tech-logo.png";
+import ceoUrl from "@/assets/ceo-portrait.png";
 
-export const LOGO_URL = logo.url;
-export const CEO_URL = ceo.url;
+// Bundled by Vite — hashed URLs that work on any host (Lovable, Vercel, etc.)
+export const LOGO_URL = logoUrl;
+export const CEO_URL = ceoUrl;
 
 export const BRAND = {
   name: "D4 TECH",
