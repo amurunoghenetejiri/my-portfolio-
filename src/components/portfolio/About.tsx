@@ -13,9 +13,17 @@ const timeline = [
 
 const pillars = [
   { icon: GraduationCap, title: "Education", desc: "Computer Engineering at FUPRE — building deep technical foundations." },
-  { icon: Target, title: "Career Goals", desc: "Ship products that scale across Africa and the world through technology." },
-  { icon: Compass, title: "Personal Mission", desc: "Bridge the gap between elegant design and powerful engineering." },
-  { icon: Heart, title: "Vision", desc: "A future where world-class software is built and led from Africa." },
+  { icon: Target, title: "Career Goals", desc: "Build innovative technology solutions that empower businesses, create opportunities, and drive digital transformation across Africa and beyond." },
+  { icon: Compass, title: "Personal Mission", desc: "Bridge the gap between elegant design and powerful engineering by creating impactful, user-centered digital experiences." },
+  { icon: Heart, title: "Vision", desc: "A future where world-class software is built, led, and exported from Africa to solve global challenges." },
+  { icon: Lightbulb, title: "Innovation", desc: "Constantly exploring emerging technologies, AI, and modern software practices to build smarter digital solutions." },
+  { icon: Code2, title: "Development", desc: "Specialized in full-stack web development, scalable applications, API integrations, and secure digital systems." },
+  { icon: Briefcase, title: "Professional Focus", desc: "Delivering reliable software products that combine performance, security, and exceptional user experiences." },
+  { icon: Users, title: "Collaboration", desc: "Working with clients, startups, and technology partners like HEPTALABS to transform ideas into successful digital products." },
+  { icon: Rocket, title: "Growth Mindset", desc: "Committed to continuous learning, innovation, and pushing the boundaries of technology through every project." },
+  { icon: Shield, title: "Core Values", desc: "Integrity, accountability, innovation, quality, and long-term relationships built on trust and excellence." },
+  { icon: Globe, title: "Global Impact", desc: "Building technology that reaches beyond borders, creating solutions for businesses and communities worldwide." },
+  { icon: Award, title: "Commitment", desc: "Dedicated to delivering high-quality digital solutions with professionalism, precision, and lasting value." }
 ];
 
 export function About() {
@@ -50,15 +58,10 @@ export function About() {
           <GlassCard>
             <h3 className="font-display text-xl font-semibold mb-3">Biography</h3>
             <p className="text-muted-foreground leading-relaxed">
-         <p>My name is <strong>Amurun Destiny.O</strong>, a <strong>Nigerian</strong> technology professional, entrepreneur, and <strong>web developer</strong>, driven by a passion for building innovative digital solutions that create meaningful impact. As the founder and CEO of <strong>D4 TECH</strong>, I believe technology should solve real problems, create opportunities, and improve lives.</p>
-<p>My journey began with curiosity, determination, and a desire to learn. From <strong>a deep passion for technology, innovation, and solving real-world problems through digital solutions</strong>, I have continuously challenged myself to grow, developing expertise in <strong>software development, UI/UX design, graphic design, AI, cloud technologies, cybersecurity</strong>. Every project I undertake reflects my commitment to quality, creativity, and attention to detail.</p>
-<p>Over the years, I have worked on <strong>a diverse range of projects, including full-stack web applications, VTU platforms, AI-powered solutions, business websites, portfolio websites, admin dashboards, payment integration systems, API integrations, graphic design projects, and custom digital solutions tailored to clients' needs.</strong>, collaborated with organizations such as <strong>HEPTALABS</strong>, and served clients across <strong>Growing companies</strong>. Each experience has strengthened my ability to transform ideas into practical, scalable, and user-focused solutions.</p>
-<p>Beyond technical skills, I value integrity, accountability, continuous learning, and genuine collaboration. I approach every opportunity with professionalism, respect, and a mindset focused on creating long-term value rather than short-term success. My goal is not simply to deliver products, but to build trust through consistent excellence.</p>
-<p>Currently, I am focused on <strong>creating solution. powering lives.</strong>, while pursuing a long-term vision of <strong>empowering businesses through technology</strong>. I believe that every challenge presents an opportunity to learn, innovate, and grow.</p>
-<p>Outside of my professional work, I enjoy <strong>[hobbies/interests]</strong>, continuously expanding my knowledge and exploring emerging technologies that shape the future.</p>
-<p>Thank you for taking the time to learn about my journey. Whether you are looking for a reliable collaborator, a creative problem solver, or someone who is committed to delivering exceptional results, I look forward to connecting, sharing ideas, and building something meaningful together.</p>
+         <p>My name is <strong>Amurun Destiny O.</strong>, a <strong>Nigerian</strong> web developer, technology entrepreneur, and Founder & CEO of <strong>D4 TECH</strong>. I am passionate about creating innovative digital solutions that solve real-world problems, empower businesses, and improve lives through technology.</p>
+<p>Driven by curiosity and continuous learning, I have developed expertise in <strong>software development, UI/UX design, graphic design, AI, cloud technologies, and cybersecurity</strong>. My portfolio includes <strong>full-stack web applications, VTU platforms, business websites, admin dashboards, payment integrations, AI-powered solutions, and custom digital products</strong>, with collaborations including <strong>HEPTALABS</strong>.</p>
+<p>I believe in integrity, innovation, and excellence, approaching every project with professionalism and a commitment to delivering scalable, user-focused solutions. My long-term vision is to empower businesses through technology while creating impactful digital experiences that make a lasting difference.</p>
 <p><em>"Success is measured not only by what we achieve, but by the positive impact we leave on the people we serve."</em></p>
-            </p>
           </GlassCard>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
