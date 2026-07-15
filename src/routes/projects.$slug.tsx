@@ -57,7 +57,7 @@ function ProjectDetail() {
   if (error || !data) return null;
 
   const p = data;
-  const images: string[] = Array.isArray(p.images) ? p.images : [];
+  const images: string[] = Array.isArray(p.images) ? (p.images as unknown[]).filter((v): v is string => typeof v === "string") : [];
 
   return (
     <>
