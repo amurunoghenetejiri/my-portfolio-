@@ -11,19 +11,11 @@ const timeline = [
   { year: "2026", title: "Colaborated with HEPTALABS", desc: "Formed an official partnership with HEPTALABS, strengthening our commitment to innovation, collaboration, and excellence in software development and digital transformation." },
 ];
 
-const pillars = [
-  { icon: GraduationCap, title: "Education", desc: "Computer Engineering at FUPRE — building deep technical foundations." },
-  { icon: Target, title: "Career Goals", desc: "Build innovative technology solutions that empower businesses, create opportunities, and drive digital transformation across Africa and beyond." },
-  { icon: Compass, title: "Personal Mission", desc: "Bridge the gap between elegant design and powerful engineering by creating impactful, user-centered digital experiences." },
-  { icon: Heart, title: "Vision", desc: "A future where world-class software is built, led, and exported from Africa to solve global challenges." },
-  { icon: Lightbulb, title: "Innovation", desc: "Constantly exploring emerging technologies, AI, and modern software practices to build smarter digital solutions." },
-  { icon: Code2, title: "Development", desc: "Specialized in full-stack web development, scalable applications, API integrations, and secure digital systems." },
-  { icon: Briefcase, title: "Professional Focus", desc: "Delivering reliable software products that combine performance, security, and exceptional user experiences." },
-  { icon: Users, title: "Collaboration", desc: "Working with clients, startups, and technology partners like HEPTALABS to transform ideas into successful digital products." },
-  { icon: Rocket, title: "Growth Mindset", desc: "Committed to continuous learning, innovation, and pushing the boundaries of technology through every project." },
-  { icon: Shield, title: "Core Values", desc: "Integrity, accountability, innovation, quality, and long-term relationships built on trust and excellence." },
-  { icon: Globe, title: "Global Impact", desc: "Building technology that reaches beyond borders, creating solutions for businesses and communities worldwide." },
-  { icon: Award, title: "Commitment", desc: "Dedicated to delivering high-quality digital solutions with professionalism, precision, and lasting value." }
+const pillars = [  
+  { icon: GraduationCap, title: "Education", desc: "Computer Engineering at FUPRE — building deep technical foundations." },  
+  { icon: Target, title: "Career Goals", desc: "Ship products that scale across Africa and the world through technology." },
+  {icon: Compass, title: "Personal Mission", desc: "Bridge the gap between elegant design and powerful engineering." }, 
+  { icon: Heart, title: "Vision", desc: "A future where world-class software is built and led from Africa." },
 ];
 
 export function About() {
