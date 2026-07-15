@@ -54,9 +54,9 @@ export function Navbar() {
           }`}
         >
           <a href="#home" className="flex items-center gap-2.5 shrink-0 group">
-            <span className="relative grid h-9 w-9 place-items-center rounded-full bg-black ring-1 ring-emerald-400/40 overflow-hidden">
-              <img src={LOGO_URL} alt="D4 TECH logo" className="h-9 w-9 object-cover" />
-              <span className="absolute inset-0 rounded-full ring-2 ring-emerald-400/0 group-hover:ring-emerald-400/60 transition" />
+            <span className="relative grid h-10 w-10 place-items-center rounded-full bg-black ring-2 ring-emerald-400/50 overflow-hidden shadow-[0_0_18px_-2px_rgba(52,211,153,.55)] transition-all duration-500 group-hover:ring-emerald-300 group-hover:shadow-[0_0_28px_0_rgba(52,211,153,.85)] group-hover:scale-105">
+              <img src={LOGO_URL} alt="D4 TECH logo" className="h-10 w-10 rounded-full object-cover transition-transform duration-700 group-hover:rotate-6" />
+              <span className="pointer-events-none absolute -inset-1 rounded-full ring-2 ring-emerald-400/0 group-hover:ring-emerald-400/40 group-hover:animate-pulse transition" />
             </span>
             <span className="font-display font-bold tracking-widest text-sm text-metallic hidden sm:block">
               {BRAND.name}

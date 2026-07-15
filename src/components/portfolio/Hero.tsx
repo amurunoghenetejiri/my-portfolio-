@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Eye, Mail, Sparkles } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { BRAND, CEO_URL, SOCIALS } from "./assets";
@@ -93,14 +93,22 @@ export function Hero() {
               </a>
               <a
                 href={cvUrl || "#"}
-                onClick={(e) => { if (!cvUrl) { e.preventDefault(); return; } onDownloadCv(); }}
                 target="_blank"
                 rel="noreferrer"
+                onClick={(e) => { if (!cvUrl) { e.preventDefault(); return; } }}
+                className={`btn-ghost-metal ${!cvUrl ? "opacity-50 pointer-events-none" : ""}`}
+              >
+                <Eye className="h-4 w-4" /> View CV
+              </a>
+              <a
+                href={cvUrl || "#"}
+                download
+                onClick={(e) => { if (!cvUrl) { e.preventDefault(); return; } onDownloadCv(); }}
                 className={`btn-ghost-metal ${!cvUrl ? "opacity-50 pointer-events-none" : ""}`}
               >
                 <Download className="h-4 w-4" /> Download CV
               </a>
-              <button type="button" data-hire-me className="btn-ghost-metal">Hire Me</button>
+              <button type="button" data-hire-me className="btn-emerald">Hire Me</button>
               <a href="#contact" className="btn-ghost-metal">
                 <Mail className="h-4 w-4" /> Contact
               </a>
