@@ -6,8 +6,9 @@ import { GlassCard, Section } from "./Section";
 const timeline = [
   { year: "2019", title: "Started Graphic Design", desc: "Began crafting brands, logos, and visual identity systems." },
   { year: "2021", title: "Started Software Development", desc: "Dived into web technologies, React, and modern JavaScript." },
-  { year: "2023", title: "Built DATA4ME", desc: "Launched a data-driven digital services platform for everyday users." },
-  { year: "2025", title: "Founded D4 TECH", desc: "Established D4 TECH — creating solutions, powering lives." },
+  { year: "2026", title: "Built DATA4ME", desc: "Launched a data-driven digital services platform for everyday users." },
+  { year: "2026", title: "Founded D4 TECH", desc: "Established D4 TECH — creating solutions, powering lives." },
+  { year: "2026", title: "Colaborated with HEPTALABS", desc: "Formed an official partnership with HEPTALABS, strengthening our commitment to innovation, collaboration, and excellence in software development and digital transformation." },
 ];
 
 const pillars = [
@@ -49,10 +50,14 @@ export function About() {
           <GlassCard>
             <h3 className="font-display text-xl font-semibold mb-3">Biography</h3>
             <p className="text-muted-foreground leading-relaxed">
-              I'm a Computer Engineering student at Federal University of Petroleum Resources, Effurun (FUPRE),
-              a self-taught software engineer, product designer, and the Founder & CEO of D4 TECH.
-              I combine years of design experience with modern engineering to build products people love —
-              from AI-powered platforms and fintech dashboards to premium business websites and brand identities.
+         <p>My name is <strong>Amurun Destiny.O</strong>, a <strong>Nigerian</strong> technology professional, entrepreneur, and <strong>web developer</strong>, driven by a passion for building innovative digital solutions that create meaningful impact. As the founder and CEO of <strong>D4 TECH</strong>, I believe technology should solve real problems, create opportunities, and improve lives.</p>
+<p>My journey began with curiosity, determination, and a desire to learn. From <strong>a deep passion for technology, innovation, and solving real-world problems through digital solutions</strong>, I have continuously challenged myself to grow, developing expertise in <strong>software development, UI/UX design, graphic design, AI, cloud technologies, cybersecurity</strong>. Every project I undertake reflects my commitment to quality, creativity, and attention to detail.</p>
+<p>Over the years, I have worked on <strong>a diverse range of projects, including full-stack web applications, VTU platforms, AI-powered solutions, business websites, portfolio websites, admin dashboards, payment integration systems, API integrations, graphic design projects, and custom digital solutions tailored to clients' needs.</strong>, collaborated with organizations such as <strong>HEPTALABS</strong>, and served clients across <strong>Growing companies</strong>. Each experience has strengthened my ability to transform ideas into practical, scalable, and user-focused solutions.</p>
+<p>Beyond technical skills, I value integrity, accountability, continuous learning, and genuine collaboration. I approach every opportunity with professionalism, respect, and a mindset focused on creating long-term value rather than short-term success. My goal is not simply to deliver products, but to build trust through consistent excellence.</p>
+<p>Currently, I am focused on <strong>creating solution. powering lives.</strong>, while pursuing a long-term vision of <strong>empowering businesses through technology</strong>. I believe that every challenge presents an opportunity to learn, innovate, and grow.</p>
+<p>Outside of my professional work, I enjoy <strong>[hobbies/interests]</strong>, continuously expanding my knowledge and exploring emerging technologies that shape the future.</p>
+<p>Thank you for taking the time to learn about my journey. Whether you are looking for a reliable collaborator, a creative problem solver, or someone who is committed to delivering exceptional results, I look forward to connecting, sharing ideas, and building something meaningful together.</p>
+<p><em>"Success is measured not only by what we achieve, but by the positive impact we leave on the people we serve."</em></p>
             </p>
           </GlassCard>
 
