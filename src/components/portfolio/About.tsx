@@ -6,15 +6,14 @@ import { GlassCard, Section } from "./Section";
 const timeline = [
   { year: "2019", title: "Started Graphic Design", desc: "Began crafting brands, logos, and visual identity systems." },
   { year: "2021", title: "Started Software Development", desc: "Dived into web technologies, React, and modern JavaScript." },
-  { year: "2026", title: "Built DATA4ME", desc: "Launched a data-driven digital services platform for everyday users." },
-  { year: "2026", title: "Founded D4 TECH", desc: "Established D4 TECH — creating solutions, powering lives." },
-  { year: "2026", title: "Colaborated with HEPTALABS", desc: "Formed an official partnership with HEPTALABS, strengthening our commitment to innovation, collaboration, and excellence in software development and digital transformation." },
+  { year: "2023", title: "Built DATA4ME", desc: "Launched a data-driven digital services platform for everyday users." },
+  { year: "2025", title: "Founded D4 TECH", desc: "Established D4 TECH — creating solutions, powering lives." },
 ];
 
-const pillars = [  
-  { icon: GraduationCap, title: "Education", desc: "Computer Engineering at FUPRE — building deep technical foundations." },  
+const pillars = [
+  { icon: GraduationCap, title: "Education", desc: "Computer Engineering at FUPRE — building deep technical foundations." },
   { icon: Target, title: "Career Goals", desc: "Ship products that scale across Africa and the world through technology." },
-  {icon: Compass, title: "Personal Mission", desc: "Bridge the gap between elegant design and powerful engineering." }, 
+  { icon: Compass, title: "Personal Mission", desc: "Bridge the gap between elegant design and powerful engineering." },
   { icon: Heart, title: "Vision", desc: "A future where world-class software is built and led from Africa." },
 ];
 
@@ -50,10 +49,11 @@ export function About() {
           <GlassCard>
             <h3 className="font-display text-xl font-semibold mb-3">Biography</h3>
             <p className="text-muted-foreground leading-relaxed">
-         <p>My name is <strong>Amurun Destiny O.</strong>, a <strong>Nigerian</strong> web developer, technology entrepreneur, and Founder & CEO of <strong>D4 TECH</strong>. I am passionate about creating innovative digital solutions that solve real-world problems, empower businesses, and improve lives through technology.</p>
-<p>Driven by curiosity and continuous learning, I have developed expertise in <strong>software development, UI/UX design, graphic design, AI, cloud technologies, and cybersecurity</strong>. My portfolio includes <strong>full-stack web applications, VTU platforms, business websites, admin dashboards, payment integrations, AI-powered solutions, and custom digital products</strong>, with collaborations including <strong>HEPTALABS</strong>.</p>
-<p>I believe in integrity, innovation, and excellence, approaching every project with professionalism and a commitment to delivering scalable, user-focused solutions. My long-term vision is to empower businesses through technology while creating impactful digital experiences that make a lasting difference.</p>
-<p><em>"Success is measured not only by what we achieve, but by the positive impact we leave on the people we serve."</em></p>
+              I'm a Computer Engineering student at Federal University of Petroleum Resources, Effurun (FUPRE),
+              a self-taught software engineer, product designer, and the Founder & CEO of D4 TECH.
+              I combine years of design experience with modern engineering to build products people love —
+              from AI-powered platforms and fintech dashboards to premium business websites and brand identities.
+            </p>
           </GlassCard>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
