@@ -12,8 +12,10 @@ import { HireMeDialog } from "@/components/portfolio/HireMeDialog";
 import { Loader } from "@/components/portfolio/Loader";
 import { Navbar } from "@/components/portfolio/Navbar";
 import { Projects } from "@/components/portfolio/Projects";
+import { RealtimeSync } from "@/components/portfolio/RealtimeSync";
 import { Services } from "@/components/portfolio/Services";
 import { Skills } from "@/components/portfolio/Skills";
+
 import { Testimonials } from "@/components/portfolio/Testimonials";
 
 export const Route = createFileRoute("/")({
