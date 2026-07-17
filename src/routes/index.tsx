@@ -26,6 +26,8 @@ function Index() {
   return (
     <>
       <Loader />
+      <RealtimeSync />
+
       <ScrollProgress />
       <CursorGlow />
       <Navbar />
