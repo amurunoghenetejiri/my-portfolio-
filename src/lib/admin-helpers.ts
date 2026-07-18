@@ -57,5 +57,5 @@ export async function refreshSignedUrl(
   if (error || !data) return url;
   return data.signedUrl;
 }
-void bucket;
+
 
