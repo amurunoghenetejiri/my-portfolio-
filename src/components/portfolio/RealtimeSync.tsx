@@ -19,6 +19,10 @@ export function RealtimeSync() {
       })
       .on("postgres_changes", { event: "*", schema: "public", table: "blog_posts" }, () => {
         qc.invalidateQueries({ queryKey: ["public-blog"] });
+        qc.invalidateQueries({ queryKey: ["public-blog-post"] });
+      })
+      .on("postgres_changes", { event: "*", schema: "public", table: "gallery_items" }, () => {
+        qc.invalidateQueries({ queryKey: ["public-gallery"] });
       })
       .on("postgres_changes", { event: "*", schema: "public", table: "site_profile" }, () => {
         qc.invalidateQueries({ queryKey: ["public-cv-url"] });

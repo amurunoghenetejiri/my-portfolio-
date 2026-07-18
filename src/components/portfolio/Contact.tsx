@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { Loader2, Send } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { SOCIALS } from "./assets";
+import { useContactInfo } from "@/lib/site-content";
 import { GlassCard, Section } from "./Section";
 import { SocialIcon } from "./SocialIcon";
 
 export function Contact() {
+  const { email, waHref, socials } = useContactInfo();
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -14,14 +15,14 @@ export function Contact() {
     const form = e.currentTarget;
     const fd = new FormData(form);
     const name = String(fd.get("name") || "").trim();
-    const email = String(fd.get("email") || "").trim();
+    const emailVal = String(fd.get("email") || "").trim();
     const phone = String(fd.get("phone") || "").trim() || null;
     const subject = String(fd.get("subject") || "").trim() || null;
     const message = String(fd.get("message") || "").trim();
-    if (!name || !email || !message) { setError("Please fill in all required fields."); setState("error"); return; }
+    if (!name || !emailVal || !message) { setError("Please fill in all required fields."); setState("error"); return; }
     setState("sending");
     setError(null);
-    const { error: err } = await supabase.from("messages").insert({ name, email, phone, subject, message });
+    const { error: err } = await supabase.from("messages").insert({ name, email: emailVal, phone, subject, message });
     if (err) { setError(err.message); setState("error"); return; }
     setState("sent");
     form.reset();
@@ -40,17 +41,17 @@ export function Contact() {
           <GlassCard>
             <div className="text-xs uppercase tracking-[0.28em] text-emerald-gradient">Direct</div>
             <div className="mt-3 space-y-2">
-              <a href="mailto:contact@d4tech.dev" className="block text-sm hover:text-emerald-gradient transition">contact@d4tech.dev</a>
-              <a href="https://wa.me/" className="block text-sm hover:text-emerald-gradient transition">WhatsApp Chat</a>
+              <a href={`mailto:${email}`} className="block text-sm hover:text-emerald-gradient transition">{email}</a>
+              <a href={waHref} target="_blank" rel="noreferrer" className="block text-sm hover:text-emerald-gradient transition">WhatsApp Chat</a>
             </div>
           </GlassCard>
 
           <GlassCard>
             <div className="text-xs uppercase tracking-[0.28em] text-emerald-gradient">Social</div>
             <div className="mt-3 flex flex-wrap gap-2">
-              {SOCIALS.map((s) => (
+              {socials.map((s) => (
                 <a
-                  key={s.name}
+                  key={s.name + s.href}
                   href={s.href}
                   aria-label={s.name}
                   target="_blank"

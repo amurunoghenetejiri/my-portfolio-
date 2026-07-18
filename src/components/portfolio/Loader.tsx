@@ -5,10 +5,22 @@ import { LOGO_URL, BRAND } from "./assets";
 const INTRO_MS = 4000;
 const LOAD_MS = 8000;
 
+const SESSION_KEY = "d4tech_loader_shown";
+
 export function Loader() {
   const [pct, setPct] = useState(0);
   const [stage, setStage] = useState<"intro" | "loading">("intro");
-  const [done, setDone] = useState(false);
+  const [done, setDone] = useState(() => {
+    if (typeof window === "undefined") return false;
+    try { return sessionStorage.getItem(SESSION_KEY) === "1"; } catch { return false; }
+  });
+
+  useEffect(() => {
+    if (done && typeof window !== "undefined") {
+      try { sessionStorage.setItem(SESSION_KEY, "1"); } catch { /* noop */ }
+    }
+  }, [done]);
+
 
   useEffect(() => {
     const introTimer = setTimeout(() => setStage("loading"), INTRO_MS);
