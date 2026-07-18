@@ -56,6 +56,42 @@ export type Database = {
         }
         Relationships: []
       }
+      gallery_items: {
+        Row: {
+          category: string | null
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string
+          is_hidden: boolean
+          sort_order: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url: string
+          is_hidden?: boolean
+          sort_order?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string
+          is_hidden?: boolean
+          sort_order?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           budget: string | null
@@ -176,6 +212,7 @@ export type Database = {
       projects: {
         Row: {
           category: string | null
+          collaborated_with: string | null
           created_at: string
           description: string
           features: string[]
@@ -187,6 +224,7 @@ export type Database = {
           live_url: string | null
           slug: string
           sort_order: number
+          status: string | null
           technologies: string[]
           thumbnail_url: string | null
           title: string
@@ -194,6 +232,7 @@ export type Database = {
         }
         Insert: {
           category?: string | null
+          collaborated_with?: string | null
           created_at?: string
           description?: string
           features?: string[]
@@ -205,6 +244,7 @@ export type Database = {
           live_url?: string | null
           slug: string
           sort_order?: number
+          status?: string | null
           technologies?: string[]
           thumbnail_url?: string | null
           title: string
@@ -212,6 +252,7 @@ export type Database = {
         }
         Update: {
           category?: string | null
+          collaborated_with?: string | null
           created_at?: string
           description?: string
           features?: string[]
@@ -223,6 +264,7 @@ export type Database = {
           live_url?: string | null
           slug?: string
           sort_order?: number
+          status?: string | null
           technologies?: string[]
           thumbnail_url?: string | null
           title?: string
@@ -237,6 +279,8 @@ export type Database = {
           company_logo_url: string | null
           company_motto: string
           company_name: string
+          contact_email: string | null
+          contact_phone: string | null
           course: string
           cover_url: string | null
           created_at: string
@@ -260,6 +304,8 @@ export type Database = {
           company_logo_url?: string | null
           company_motto?: string
           company_name?: string
+          contact_email?: string | null
+          contact_phone?: string | null
           course?: string
           cover_url?: string | null
           created_at?: string
@@ -283,6 +329,8 @@ export type Database = {
           company_logo_url?: string | null
           company_motto?: string
           company_name?: string
+          contact_email?: string | null
+          contact_phone?: string | null
           course?: string
           cover_url?: string | null
           created_at?: string
