@@ -9,6 +9,7 @@ import { HireMeDialog } from "@/components/portfolio/HireMeDialog";
 import { CursorGlow, ScrollProgress, ScrollToTop } from "@/components/portfolio/Effects";
 
 export const Route = createFileRoute("/projects/$slug")({
+  ssr: false,
   component: ProjectDetail,
   head: ({ params }) => ({
     meta: [
