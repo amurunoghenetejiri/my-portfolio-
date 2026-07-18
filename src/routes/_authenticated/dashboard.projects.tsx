@@ -151,13 +151,28 @@ function ProjectEditor({ initial, onCancel, onSave, saving, error }: {
 
       <Card title="Details">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Text label="Title" value={p.title ?? ""} onChange={(v) => update("title", v)} />
+          <Text label="Project name *" value={p.title ?? ""} onChange={(v) => update("title", v)} />
+          <Text label="Live / Website Link *" value={p.live_url ?? ""} onChange={(v) => update("live_url", v)} />
           <Text label="Category" value={p.category ?? ""} onChange={(v) => update("category", v)} />
           <Text label="GitHub URL" value={p.github_url ?? ""} onChange={(v) => update("github_url", v)} />
-          <Text label="Live URL" value={p.live_url ?? ""} onChange={(v) => update("live_url", v)} />
+          <Text label="Collaborated with" value={p.collaborated_with ?? ""} onChange={(v) => update("collaborated_with", v)} />
+          <div>
+            <label className="block text-[10px] uppercase tracking-[0.24em] text-muted-foreground mb-1.5">Project status</label>
+            <select
+              value={p.status ?? "completed"}
+              onChange={(e) => update("status", e.target.value)}
+              className="w-full rounded-xl border border-border/60 bg-card/40 px-3 py-2 text-sm outline-none focus:border-emerald-400/60"
+            >
+              <option value="completed">Completed</option>
+              <option value="in progress">In Progress</option>
+              <option value="ongoing">Ongoing</option>
+              <option value="planned">Planned</option>
+            </select>
+          </div>
           <Text label="Slug (optional, auto)" value={p.slug ?? ""} onChange={(v) => update("slug", v)} />
           <Text label="Sort order" value={String(p.sort_order ?? 0)} onChange={(v) => update("sort_order", Number(v) || 0)} />
         </div>
+
         <TextArea label="Description" value={p.description ?? ""} onChange={(v) => update("description", v)} rows={5} />
         <div className="flex flex-wrap gap-4">
           <label className="inline-flex items-center gap-2 text-sm"><input type="checkbox" checked={!!p.is_featured} onChange={(e) => update("is_featured", e.target.checked)} /> Featured</label>
