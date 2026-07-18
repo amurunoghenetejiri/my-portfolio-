@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { uploadMedia } from "@/lib/admin-helpers";
+import { uploadMedia, refreshSignedUrl } from "@/lib/admin-helpers";
 import { Loader2, Save, Upload, Plus, X } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/dashboard/profile")({
