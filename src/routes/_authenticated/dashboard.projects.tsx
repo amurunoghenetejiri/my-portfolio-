@@ -22,6 +22,8 @@ type Project = {
   github_url: string | null;
   live_url: string | null;
   category: string | null;
+  collaborated_with: string | null;
+  status: string | null;
   sort_order: number;
   is_featured: boolean;
   is_hidden: boolean;
