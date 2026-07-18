@@ -1,7 +1,9 @@
-import { BRAND, LOGO_URL, NAV_SECTIONS, SOCIALS } from "./assets";
+import { BRAND, LOGO_URL, NAV_SECTIONS } from "./assets";
 import { SocialIcon } from "./SocialIcon";
+import { useContactInfo } from "@/lib/site-content";
 
 export function Footer() {
+  const { socials } = useContactInfo();
   return (
     <footer className="relative border-t border-border/40 pt-16 pb-10">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/60 to-transparent" />
@@ -9,8 +11,8 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-full bg-black ring-1 ring-emerald-400/40 overflow-hidden">
-                <img src={LOGO_URL} alt="D4 TECH" className="h-11 w-11 object-cover" />
+              <span className="grid h-11 w-11 place-items-center rounded-full bg-black ring-1 ring-emerald-400/40 overflow-hidden shadow-[0_0_18px_-2px_rgba(52,211,153,.55)]">
+                <img src={LOGO_URL} alt="D4 TECH" className="h-11 w-11 rounded-full object-cover" />
               </span>
               <div>
                 <div className="font-display font-bold tracking-widest text-metallic">{BRAND.name}</div>
@@ -22,9 +24,9 @@ export function Footer() {
               products for ambitious founders and teams.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
-              {SOCIALS.map((s) => (
+              {socials.map((s) => (
                 <a
-                  key={s.name}
+                  key={s.name + s.href}
                   href={s.href}
                   aria-label={s.name}
                   target="_blank"

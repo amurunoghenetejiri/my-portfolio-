@@ -76,6 +76,14 @@ function ProfilePage() {
         <TextArea label="Education" value={form.education as string} onChange={(v) => update("education", v)} rows={3} />
       </Card>
 
+      <Card title="Contact information">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Text label="Support email" value={(form.contact_email as string) ?? ""} onChange={(v) => update("contact_email", v)} />
+          <Text label="WhatsApp / phone (with country code)" value={(form.contact_phone as string) ?? ""} onChange={(v) => update("contact_phone", v)} />
+        </div>
+        <p className="text-xs text-muted-foreground">These update the public site's contact section instantly. Phone is used to build the WhatsApp link.</p>
+      </Card>
+
       <Card title="Images">
         <ImageField label="Avatar / portrait" value={form.avatar_url as string | null} onFile={(f) => handleUpload("avatar_url", f)} onClear={() => update("avatar_url", null)} />
         <ImageField label="Cover image" value={form.cover_url as string | null} onFile={(f) => handleUpload("cover_url", f)} onClear={() => update("cover_url", null)} />

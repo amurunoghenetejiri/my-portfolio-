@@ -13,6 +13,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedDashboardIndexRouteImport } from './routes/_authenticated/dashboard.index'
 import { Route as AuthenticatedDashboardProjectsRouteImport } from './routes/_authenticated/dashboard.projects'
@@ -20,6 +21,7 @@ import { Route as AuthenticatedDashboardProfileRouteImport } from './routes/_aut
 import { Route as AuthenticatedDashboardNotificationsRouteImport } from './routes/_authenticated/dashboard.notifications'
 import { Route as AuthenticatedDashboardMessagesRouteImport } from './routes/_authenticated/dashboard.messages'
 import { Route as AuthenticatedDashboardLeadsRouteImport } from './routes/_authenticated/dashboard.leads'
+import { Route as AuthenticatedDashboardGalleryRouteImport } from './routes/_authenticated/dashboard.gallery'
 import { Route as AuthenticatedDashboardCvRouteImport } from './routes/_authenticated/dashboard.cv'
 import { Route as AuthenticatedDashboardBlogRouteImport } from './routes/_authenticated/dashboard.blog'
 
@@ -40,6 +42,11 @@ const IndexRoute = IndexRouteImport.update({
 const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   id: '/projects/$slug',
   path: '/projects/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
@@ -83,6 +90,12 @@ const AuthenticatedDashboardLeadsRoute =
     path: '/leads',
     getParentRoute: () => AuthenticatedDashboardRoute,
   } as any)
+const AuthenticatedDashboardGalleryRoute =
+  AuthenticatedDashboardGalleryRouteImport.update({
+    id: '/gallery',
+    path: '/gallery',
+    getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
 const AuthenticatedDashboardCvRoute =
   AuthenticatedDashboardCvRouteImport.update({
     id: '/cv',
@@ -100,9 +113,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/blog/$slug': typeof BlogSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/dashboard/blog': typeof AuthenticatedDashboardBlogRoute
   '/dashboard/cv': typeof AuthenticatedDashboardCvRoute
+  '/dashboard/gallery': typeof AuthenticatedDashboardGalleryRoute
   '/dashboard/leads': typeof AuthenticatedDashboardLeadsRoute
   '/dashboard/messages': typeof AuthenticatedDashboardMessagesRoute
   '/dashboard/notifications': typeof AuthenticatedDashboardNotificationsRoute
@@ -113,9 +128,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/dashboard/blog': typeof AuthenticatedDashboardBlogRoute
   '/dashboard/cv': typeof AuthenticatedDashboardCvRoute
+  '/dashboard/gallery': typeof AuthenticatedDashboardGalleryRoute
   '/dashboard/leads': typeof AuthenticatedDashboardLeadsRoute
   '/dashboard/messages': typeof AuthenticatedDashboardMessagesRoute
   '/dashboard/notifications': typeof AuthenticatedDashboardNotificationsRoute
@@ -129,9 +146,11 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/admin': typeof AdminRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/blog/$slug': typeof BlogSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/_authenticated/dashboard/blog': typeof AuthenticatedDashboardBlogRoute
   '/_authenticated/dashboard/cv': typeof AuthenticatedDashboardCvRoute
+  '/_authenticated/dashboard/gallery': typeof AuthenticatedDashboardGalleryRoute
   '/_authenticated/dashboard/leads': typeof AuthenticatedDashboardLeadsRoute
   '/_authenticated/dashboard/messages': typeof AuthenticatedDashboardMessagesRoute
   '/_authenticated/dashboard/notifications': typeof AuthenticatedDashboardNotificationsRoute
@@ -145,9 +164,11 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/dashboard'
+    | '/blog/$slug'
     | '/projects/$slug'
     | '/dashboard/blog'
     | '/dashboard/cv'
+    | '/dashboard/gallery'
     | '/dashboard/leads'
     | '/dashboard/messages'
     | '/dashboard/notifications'
@@ -158,9 +179,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin'
+    | '/blog/$slug'
     | '/projects/$slug'
     | '/dashboard/blog'
     | '/dashboard/cv'
+    | '/dashboard/gallery'
     | '/dashboard/leads'
     | '/dashboard/messages'
     | '/dashboard/notifications'
@@ -173,9 +196,11 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/admin'
     | '/_authenticated/dashboard'
+    | '/blog/$slug'
     | '/projects/$slug'
     | '/_authenticated/dashboard/blog'
     | '/_authenticated/dashboard/cv'
+    | '/_authenticated/dashboard/gallery'
     | '/_authenticated/dashboard/leads'
     | '/_authenticated/dashboard/messages'
     | '/_authenticated/dashboard/notifications'
@@ -188,6 +213,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AdminRoute: typeof AdminRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
 }
 
@@ -219,6 +245,13 @@ declare module '@tanstack/react-router' {
       path: '/projects/$slug'
       fullPath: '/projects/$slug'
       preLoaderRoute: typeof ProjectsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/dashboard': {
@@ -270,6 +303,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardLeadsRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
     }
+    '/_authenticated/dashboard/gallery': {
+      id: '/_authenticated/dashboard/gallery'
+      path: '/gallery'
+      fullPath: '/dashboard/gallery'
+      preLoaderRoute: typeof AuthenticatedDashboardGalleryRouteImport
+      parentRoute: typeof AuthenticatedDashboardRoute
+    }
     '/_authenticated/dashboard/cv': {
       id: '/_authenticated/dashboard/cv'
       path: '/cv'
@@ -290,6 +330,7 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedDashboardRouteChildren {
   AuthenticatedDashboardBlogRoute: typeof AuthenticatedDashboardBlogRoute
   AuthenticatedDashboardCvRoute: typeof AuthenticatedDashboardCvRoute
+  AuthenticatedDashboardGalleryRoute: typeof AuthenticatedDashboardGalleryRoute
   AuthenticatedDashboardLeadsRoute: typeof AuthenticatedDashboardLeadsRoute
   AuthenticatedDashboardMessagesRoute: typeof AuthenticatedDashboardMessagesRoute
   AuthenticatedDashboardNotificationsRoute: typeof AuthenticatedDashboardNotificationsRoute
@@ -302,6 +343,7 @@ const AuthenticatedDashboardRouteChildren: AuthenticatedDashboardRouteChildren =
   {
     AuthenticatedDashboardBlogRoute: AuthenticatedDashboardBlogRoute,
     AuthenticatedDashboardCvRoute: AuthenticatedDashboardCvRoute,
+    AuthenticatedDashboardGalleryRoute: AuthenticatedDashboardGalleryRoute,
     AuthenticatedDashboardLeadsRoute: AuthenticatedDashboardLeadsRoute,
     AuthenticatedDashboardMessagesRoute: AuthenticatedDashboardMessagesRoute,
     AuthenticatedDashboardNotificationsRoute:
@@ -331,6 +373,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AdminRoute: AdminRoute,
+  BlogSlugRoute: BlogSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
 }
 export const routeTree = rootRouteImport
