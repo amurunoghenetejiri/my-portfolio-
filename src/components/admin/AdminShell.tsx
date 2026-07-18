@@ -1,5 +1,5 @@
 import { Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
-import { Bell, Briefcase, FileText, Handshake, Home, Inbox, LogOut, ScrollText, User } from "lucide-react";
+import { Bell, Briefcase, FileText, Handshake, Home, Image as ImageIcon, Inbox, LogOut, ScrollText, User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { LOGO_URL, BRAND } from "@/components/portfolio/assets";
 import { NotificationBell } from "./NotificationBell";
@@ -9,6 +9,7 @@ const nav: NavItem[] = [
   { to: "/dashboard", label: "Overview", icon: Home, exact: true },
   { to: "/dashboard/profile", label: "Profile", icon: User },
   { to: "/dashboard/projects", label: "Projects", icon: Briefcase },
+  { to: "/dashboard/gallery", label: "Gallery", icon: ImageIcon },
   { to: "/dashboard/blog", label: "Blog", icon: FileText },
   { to: "/dashboard/messages", label: "Messages", icon: Inbox },
   { to: "/dashboard/leads", label: "Hire Me", icon: Handshake },
