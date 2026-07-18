@@ -5,6 +5,7 @@ import { LOGO_URL, BRAND } from "@/components/portfolio/assets";
 import { Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
+  ssr: false,
   head: () => ({
     meta: [
       { title: "Admin — D4 TECH" },
