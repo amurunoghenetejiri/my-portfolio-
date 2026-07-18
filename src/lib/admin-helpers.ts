@@ -36,3 +36,26 @@ export function slugify(input: string): string {
     .replace(/-+/g, "-")
     .slice(0, 80);
 }
+
+/**
+ * Given a possibly-expired Supabase signed URL, extract its object path and
+ * return a fresh signed URL. Falls back to the original url if it isn't a
+ * recognisable signed URL.
+ */
+export async function refreshSignedUrl(
+  url: string | null | undefined,
+  bucket: "media" | "cv" = "media",
+  expiresIn: number = 60 * 60 * 24 * 7,
+): Promise<string | null> {
+  if (!url) return null;
+  const match = url.match(/\/storage\/v1\/object\/sign\/([^/]+)\/([^?]+)/);
+  if (!match) return url;
+  const [, b, path] = match;
+  const { data, error } = await supabase.storage
+    .from(b as "media" | "cv")
+    .createSignedUrl(decodeURIComponent(path), expiresIn);
+  if (error || !data) return url;
+  return data.signedUrl;
+}
+
+

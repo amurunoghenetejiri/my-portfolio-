@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { uploadMedia } from "@/lib/admin-helpers";
+import { uploadMedia, refreshSignedUrl } from "@/lib/admin-helpers";
 import { Loader2, Save, Upload, Plus, X } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/dashboard/profile")({
@@ -132,12 +132,15 @@ export function TextArea({ label, value, onChange, rows = 4 }: { label: string; 
 
 export function ImageField({ label, value, onFile, onClear }: { label: string; value: string | null; onFile: (f: File) => Promise<void> | void; onClear: () => void }) {
   const [busy, setBusy] = useState(false);
+  const [resolved, setResolved] = useState<string | null>(value);
+  useEffect(() => { let m = true; refreshSignedUrl(value).then((u) => { if (m) setResolved(u); }); return () => { m = false; }; }, [value]);
   return (
     <div>
       <label className="block text-[10px] uppercase tracking-[0.24em] text-muted-foreground mb-2">{label}</label>
       <div className="flex items-center gap-4">
         <div className="h-20 w-20 rounded-2xl border border-border/60 bg-card/40 overflow-hidden grid place-items-center">
-          {value ? <img src={value} alt="" className="h-full w-full object-cover" /> : <span className="text-xs text-muted-foreground">Empty</span>}
+          {resolved ? <img src={resolved} alt="" className="h-full w-full object-cover" /> : <span className="text-xs text-muted-foreground">Empty</span>}
+
         </div>
         <label className="btn-ghost-metal cursor-pointer">
           {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />} Upload
