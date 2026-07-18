@@ -83,7 +83,7 @@ function ProjectsPage() {
           <h1 className="font-display text-3xl font-bold">Projects</h1>
           <p className="mt-1 text-sm text-muted-foreground">{data?.length ?? 0} project{(data?.length ?? 0) === 1 ? "" : "s"}</p>
         </div>
-        <button onClick={() => setEditing({ title: "", description: "", technologies: [], features: [], images: [], sort_order: 0, is_featured: false, is_hidden: false })} className="btn-emerald">
+        <button onClick={() => setEditing({ title: "", description: "", technologies: [], features: [], images: [], sort_order: 0, status: "completed", is_featured: false, is_hidden: false })} className="btn-emerald">
           <Plus className="h-4 w-4" /> New project
         </button>
       </div>
