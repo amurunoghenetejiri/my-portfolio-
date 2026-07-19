@@ -3,10 +3,10 @@ import { Briefcase, Code2, Palette, PenTool } from "lucide-react";
 import { GlassCard, Section } from "./Section";
 
 const roles = [
-  { icon: Briefcase, title: "Founder & CEO", org: "D4 TECH", period: "2025 — Present", desc: "Leading strategy, engineering, and design across all D4 TECH products and client engagements." },
-  { icon: Code2, title: "Software Developer", org: "Independent / D4 TECH", period: "2021 — Present", desc: "Building modern web applications with React, TypeScript, and Supabase for startups and businesses." },
-  { icon: PenTool, title: "UI/UX Designer", org: "Independent / D4 TECH", period: "2020 — Present", desc: "Designing intuitive product interfaces and end-to-end user experiences for web and mobile." },
-  { icon: Palette, title: "Graphic Designer", org: "Independent", period: "2019 — Present", desc: "Crafting logos, brand identities, flyers, posters, and marketing collateral for global clients." },
+  { icon: Briefcase, title: "Founder & CEO", org: "D4 TECH", period: "2026 — Present", desc: "Leading strategy, engineering, and design across all D4 TECH products and client engagements." },
+  { icon: Code2, title: "Software Developer", org: "Independent / D4 TECH", period: "2024 — Present", desc: "Building modern web applications with React, TypeScript, and Supabase for startups and businesses." },
+  { icon: PenTool, title: "UI/UX Designer", org: "Independent / D4 TECH", period: "2023 — Present", desc: "Designing intuitive product interfaces and end-to-end user experiences for web and mobile." },
+  { icon: Palette, title: "Graphic Designer", org: "Independent", period: "2021 — Present", desc: "Crafting logos, brand identities, flyers, posters, and marketing collateral for global clients." },
 ];
 
 export function Experience() {
